@@ -1,0 +1,7 @@
+uv.lock
+dist
+build
+node_modules
+.venv
+venv
+

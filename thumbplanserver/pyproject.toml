@@ -1,0 +1,25 @@
+[project]
+name = "thumbplan"
+version = "0.1.0"
+description = "Finger servers are insecure by design, but they are useful for testing and development purposes."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "ruff",
+    "mypy",
+    "ty",
+    "pyright",
+    "vulture",
+    # used by pytest
+    "colorama",
+    "coverage",
+    "iniconfig",
+    "packaging",
+    "pluggy",
+]

@@ -1,0 +1,98 @@
+[project]
+name = "thumbplan"
+version = "0.1.0"
+description = "Finger servers are insecure by design, but they are useful for testing and development purposes."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "pytest-asyncio",
+    "ruff",
+    "mypy",
+    "ty",
+    "pyright"
+]
+
+# pytest config file
+[tool.pytest]
+addopts = "-v --tb=short -p no:warnings"
+
+# Configure test matching
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.pytest.ini_options]
+markers = [
+    "asyncio: mark test as async (pytest-asyncio)"
+]
+
+[tool.ty]
+# Use .ignore, .gitignore, .git/info/exclude
+respect-ignore-files = true
+
+[tool.ty.environment]
+python-version = "3.12"
+# Path to python, site-packages
+python = "./.venv"
+# Tailor type stubs and conditionalized type definitions to windows.
+# This is useful for Windows-specific code, such as `winreg` or `ctypes`.
+# If you are not using Windows, you can remove this line.
+# options are: win32, darwin, android, ios, linux
+# python-platform = "win32"
+# typeshed = "/path/to/custom/typeshed"
+# priority for module resolution, similar to MYPYPATH or pyright stubPath
+# extra-paths = ["~/shared/my-search-path"]
+
+# [tool.ty.src]
+# root = [".","src","./thumbplanserver", "plancli"]
+
+[tool.ty.terminal]
+# Error if ty emits any warning-level diagnostics.
+error-on-warning = false
+# full, concise
+output-format = "concise"
+
+[tool.ty.rules]
+unused-ignore-comment = "warn"
+redundant-cast = "warn"
+possibly-unbound-attribute = "warn"
+possibly-unbound-import = "warn"
+unresolved-import = "warn"
+
+[tool.vulture]
+# Vulture configuration file
+# Exclude specific directories or files
+exclude = [
+    ".venv",
+    "venv",
+    "env",
+    "build",
+    "dist",
+    ".ruff_cache",
+]
+# Exclude specific patterns
+exclude-patterns = [
+    "tests",
+]
+# Minimum score for a function to be considered unused
+min-confidence = 60
+# Minimum score for a class to be considered unused
+min-confidence-class = 60
+# Minimum score for a variable to be considered unused
+min-confidence-variable = 60
+# Minimum score for a module to be considered unused
+min-confidence-module = 60
+# Minimum score for a comment to be considered unused
+min-confidence-comment = 60
+# Minimum score for a string to be considered unused
+min-confidence-string = 60
+# Ignore specific patterns
+ignore-patterns = [
+    "tests",
+]

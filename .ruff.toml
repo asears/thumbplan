@@ -1,0 +1,51 @@
+# Ruff configuration file
+# TODO(AS): Implement rules to fix
+line-length = 120
+preview = false
+output-format = "concise"
+
+[lint]
+# select = ["ALL"]
+select = [
+    "A",
+    "B",
+    "S",
+    "C",
+    "E",
+    "F",
+    "I",
+    "N",
+    "RUF",
+    "D",
+    "Q",
+    "G",
+    "T",
+    "UP",
+]
+ignore = [
+    "D203",
+    "D212",
+    "T201",
+    "G004",
+    "D413",
+]
+# Exclude specific directories or files
+exclude = [
+    ".venv",
+    "venv",
+    "env",
+    "build",
+    "dist",
+    ".ruff_cache",
+]
+
+# Exclude from tests S101
+[lint.per-file-ignores]
+"tests/**/test_*.py" = [
+    "S101",
+    "D",
+    "C",
+]
+
+[lint.mccabe]
+max-complexity = 15

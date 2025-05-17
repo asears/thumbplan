@@ -1,0 +1,3 @@
+- Follow markdown-lint rules
+- Ensure line break between headings and content
+- Tests written with pytest and pytest-mock not unittest

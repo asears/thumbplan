@@ -1,0 +1,7 @@
+[project]
+name = "plancli"
+version = "0.1.0"
+description = "I love it when a plan comes together."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
