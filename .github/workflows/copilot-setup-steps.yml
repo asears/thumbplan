@@ -1,0 +1,29 @@
+# [Custom] Thumbplan environment setup for Copilot Agent
+name: "Copilot Setup Steps"
+
+on: workflow_dispatch
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    # Set the permissions to the lowest permissions possible needed for your steps.
+    # Copilot will be given its own token for its operations.
+    permissions:
+      contents: read
+
+    # If you do not check out your code, Copilot will do this for you.
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install the latest version of uv and set the python version to 3.13t
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: 3.13t
+          activate-environment: true
+
+      - run: uv pip install --python=3.13t pip ruff ty pytest pytest-mock pytest-cov pytest-asyncio pytest-benchmark[histogram] vulture bandit
